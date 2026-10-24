@@ -16,6 +16,7 @@ import { PurgeBarComponent } from '@shared/components/purge-bar/purge-bar.compon
 import { RadioGroupComponent, RadioOption } from '@shared/components/radio-group/radio-group.component';
 import { SearchByComponent } from '@shared/components/search-by/search-by.component';
 import type { SearchFieldOption } from '@core/constants/search-fields';
+import { copyToClipboard } from '@core/utils/share-link';
 import { NgSelectWrapperComponent } from '@shared/components/select/ng-select-wrapper.component';
 import { StatusTabsComponent, StatusTabItem } from '@shared/components/status-tabs/status-tabs.component';
 import { ToastComponent } from '@shared/components/toast/toast.component';
@@ -268,7 +269,7 @@ export class UiGalleryComponent {
     }
 
     copy(text: string, key: string): void {
-        void navigator.clipboard?.writeText(text);
+        void copyToClipboard(text);
         this.copiedKey = key;
         setTimeout(() => {
             if (this.copiedKey === key) {
