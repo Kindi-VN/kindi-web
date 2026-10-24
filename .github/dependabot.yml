@@ -44,3 +44,16 @@ updates:
       - dependency-name: "tailwindcss"
         update-types:
           - version-update:semver-major
+      # App đang chạy Angular 20: cả họ @angular/* phải lên cùng bản và chỉ nâng major
+      # khi nâng cả framework, nên chặn PR major lẻ (vd @angular/cli 20 -> 22).
+      - dependency-name: "@angular/*"
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "@angular-devkit/*"
+        update-types:
+          - version-update:semver-major
+      # zone.js bị @angular/core ghim ~0.15.0 (peer) → chỉ nâng cùng bản Angular major.
+      - dependency-name: "zone.js"
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-major
